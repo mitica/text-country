@@ -21,7 +21,11 @@ function saveData(items) {
     const DATA = {};
 
     if (START_COUNTRY) {
-        items = items.substr(items.findIndex(item => item.cca2.toLowerCase() === START_COUNTRY.toLowerCase()));
+        const languages = require('../data/languages.json');
+        for (let lang of languages) {
+            DATA[lang] = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', lang + '.json'), 'utf8'));
+        }
+        items = items.slice(items.findIndex(item => item.cca2.toLowerCase() === START_COUNTRY.toLowerCase()));
     }
 
     function mergeData(item) {
@@ -36,11 +40,11 @@ function saveData(items) {
 
     return seriesPromise(items, item => formatCountryData(item).then(r => mergeData(r)))
         .then(() => {
-            const langs = Object.keys(DATA);
+            const languages = Object.keys(DATA).sort();
             const file = path.join(__dirname, '..', 'data', 'languages.json');
-            fs.writeFileSync(file, JSON.stringify(langs), 'utf8');
+            fs.writeFileSync(file, JSON.stringify(languages), 'utf8');
 
-            for (let lang of langs) {
+            for (let lang of languages) {
                 const data = DATA[lang];
                 for (let country of Object.keys(data)) {
                     // concat atonic names
