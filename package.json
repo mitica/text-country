@@ -1,0 +1,46 @@
+{
+  "name": "text-country",
+  "version": "0.1.0",
+  "description": "Finds country in text",
+  "main": "./lib/index.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "pretest": "npm run clean && npm run tsc",
+    "test": "ava --no-cache --verbose lib/**/*.test.js",
+    "posttest": "npm run clean-test-code",
+    "tsc": "tsc",
+    "tscw": "tsc -w",
+    "preversion": "npm run tsc",
+    "postversion": "git push --follow-tags",
+    "prepublishOnly": "npm run tsc && npm run clean-test-code",
+    "clean": "rimraf ./lib && rimraf ./types",
+    "clean-test-code": "rimraf ./lib/**/*.test.js && rimraf ./types/**/*.test.d.ts",
+    "generate-data": "node ./scripts/generate-data.js"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mitica/text-country.git"
+  },
+  "keywords": [
+    "text-country",
+    "country",
+    "country-code"
+  ],
+  "author": "Dumitru Cantea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mitica/text-country/issues"
+  },
+  "homepage": "https://github.com/Mitica/text-country#readme",
+  "devDependencies": {
+    "@types/node": "latest",
+    "atonic": "^1.0.4",
+    "ava": "^0.23.0",
+    "node-fetch": "^2.1.2",
+    "rimraf": "^2.6.2",
+    "typescript": "latest"
+  }
+}
