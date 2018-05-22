@@ -1,1 +1,1 @@
-{"cd":["Republiki ya Kongó Demokratiki","Kinshasa","Republiki ya Kongo Demokratiki"],"cg":["Republíki ya Kongó","Brazzaville","Republiki ya Kongo"],"lt":["Lietuvos Respublikos","Lietuva","Vilnius"]}
+{"cd":[{"name":"Republiki ya Kongó Demokratiki","type":"O"},{"name":"Republiki ya Kongo Demokratiki","type":"A"},{"name":"Kinshasa","type":"P"}],"cg":[{"name":"Republíki ya Kongó","type":"O"},{"name":"Republiki ya Kongo","type":"A"},{"name":"Brazzaville","type":"P"}],"lt":[{"name":"Lietuvos Respublikos","type":"O"},{"name":"Lietuva","type":"C"},{"name":"Vilnius","type":"P"}]}

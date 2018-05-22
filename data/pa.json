@@ -1,1 +1,1 @@
-{"aw":["Aruba","Oranjestad"],"bq":["Boneiru, Sint Eustatius y Saba","Kralendijk"],"cw":["Pais Kòrsou","Willemstad","Pais Korsou"],"pw":["Beluu er a Belau","Belau","Melekeok"]}
+{"aw":[{"name":"Aruba","type":"O"},{"name":"Oranjestad","type":"P"}],"bq":[{"name":"Boneiru, Sint Eustatius y Saba","type":"O"},{"name":"Kralendijk","type":"P"}],"cw":[{"name":"Pais Kòrsou","type":"O"},{"name":"Pais Korsou","type":"A"},{"name":"Willemstad","type":"P"}],"pw":[{"name":"Beluu er a Belau","type":"O"},{"name":"Belau","type":"C"},{"name":"Melekeok","type":"P"}]}
