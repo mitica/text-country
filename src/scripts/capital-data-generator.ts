@@ -3,14 +3,24 @@ import fetch from 'node-fetch';
 import { DataGenerator } from './data-generator';
 import { CountryNameType, LanguageData, getLanguages, seriesPromise, getLanguageData, delay } from '../data';
 
+const START_LANG = process.env.START_LANG;
+
 export class CapitalDataGenerator extends DataGenerator {
     constructor(private username: string) {
         super();
     }
     protected async start(): Promise<void> {
         const languages = getLanguages();
+        let start = false;
 
         await seriesPromise(languages, async lang => {
+            if (!start && START_LANG) {
+                if (START_LANG !== lang) {
+                    return;
+                }
+                start = true;
+            }
+            
             const data = getLanguageData(lang);
             const countries = Object.keys(data);
             const langData: LanguageData = {};
