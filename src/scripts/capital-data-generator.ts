@@ -6,8 +6,13 @@ import { CountryNameType, LanguageData, getLanguages, seriesPromise, getLanguage
 const START_LANG = process.env.START_LANG;
 
 export class CapitalDataGenerator extends DataGenerator {
-    constructor(private username: string) {
+    constructor(private username?: string) {
         super();
+        this.username = username || process.env.GEONAMES_USERNAME;
+
+        if (!this.username) {
+            throw new Error(`env GEONAMES_USERNAME is required`);
+        }
     }
     protected async start(): Promise<void> {
         const languages = getLanguages();
@@ -20,7 +25,7 @@ export class CapitalDataGenerator extends DataGenerator {
                 }
                 start = true;
             }
-            
+
             const data = getLanguageData(lang);
             const countries = Object.keys(data);
             const langData: LanguageData = {};
