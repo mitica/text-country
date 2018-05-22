@@ -1,5 +1,7 @@
 import { Options, DEFAULT_OPTIONS } from "./options";
-const LANGUAGES: string[] = require('../data/languages.json');
+import { getLanguages, getLanguageData } from "./data";
+
+const LANGUAGES = getLanguages();
 const CACHE: { [lang: string]: DataItem[] } = {}
 
 export type CountryRating = {
@@ -47,9 +49,9 @@ export default function findCountry(text: string, lang: string, options?: Option
 
 function getDataItems(lang: string): DataItem[] {
     if (CACHE[lang] === undefined) {
-        const data = require('../data/' + lang + '.json');
+        const data = getLanguageData(lang);
         const items = Object.keys(data).map(country => {
-            const arr: string[] = data[country];
+            const arr: string[] = data[country].map(it => it.name);
             return {
                 country,
                 reg: new RegExp('\\b(' + arr.join('|') + ')\\b', 'gi'),
