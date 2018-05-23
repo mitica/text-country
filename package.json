@@ -1,6 +1,6 @@
 {
   "name": "text-country",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Finds country in text",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
