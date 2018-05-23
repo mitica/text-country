@@ -13,16 +13,16 @@ export class SynonymsDataGenerator extends DataGenerator {
             const langData: LanguageData = {};
             await seriesPromise(countries, async country => {
                 const countryName = data[country].find(item => item.type === CountryNameType.OFFICIAL);
-                // const commonName = data[country].find(item => item.type === CountryNameType.COMMON);
+                const commonName = data[country].find(item => item.type === CountryNameType.COMMON);
                 const capitalName = data[country].find(item => item.type === CountryNameType.CAPITAL);
 
                 const names: string[] = []
                 if (countryName) {
                     names.push(countryName.name);
                 }
-                // if (commonName) {
-                //     names.push(commonName.name);
-                // }
+                if (commonName) {
+                    names.push(commonName.name);
+                }
                 if (capitalName) {
                     names.push(capitalName.name);
                 }
