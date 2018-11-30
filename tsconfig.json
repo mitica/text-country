@@ -10,7 +10,7 @@
         "sourceMap": false,
         "moduleResolution": "node",
         "declaration": true,
-        "declarationDir": "types",
+        "declarationDir": "lib",
         "noUnusedLocals": true,
         "noUnusedParameters": true,
         "allowJs": false

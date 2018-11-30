@@ -2,6 +2,7 @@
 import fetch from 'node-fetch';
 import { DataGenerator } from './data-generator';
 import { CountryName, CountryNameType, LanguageData } from '../data';
+const iso6392 = require('iso-639-2') as { iso6392B: string, iso6392T: string | null, iso6391: string | null }[];
 
 export class JsonDataGenerator extends DataGenerator {
     constructor(private setOrAdd: 'set' | 'add' = 'set') {
@@ -51,10 +52,13 @@ function formatCountryData(item: any): CountryData {
     let langs = Object.keys(translations);
 
     for (let lang of langs) {
-        data.names[shortLang(lang)] = [
-            { name: translations[lang].official, type: CountryNameType.OFFICIAL },
-            { name: translations[lang].common, type: CountryNameType.COMMON },
-        ];
+        const slang = shortLang(lang);
+        if (slang) {
+            data.names[slang] = [
+                { name: translations[lang].official, type: CountryNameType.OFFICIAL },
+                { name: translations[lang].common, type: CountryNameType.COMMON },
+            ];
+        }
     }
 
     return data;
@@ -67,5 +71,11 @@ type CountryData = {
 }
 
 function shortLang(lang: string) {
-    return lang.substr(0, 2).toLowerCase();
+    lang = lang.toLowerCase();
+    const item = iso6392.find(item => item.iso6392B === lang) || iso6392.find(item => item.iso6392T === lang);
+    if (item && item.iso6391) {
+        return item.iso6391;
+    }
+    console.log(`Invalid language code: ${lang}`);
+    return null;
 }

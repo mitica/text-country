@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Finds country in text",
   "main": "./lib/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "pretest": "npm run clean && npm run tsc",
     "test": "ava --no-cache --verbose lib/**/*.test.js",
@@ -13,12 +13,12 @@
     "preversion": "npm run tsc",
     "postversion": "git push --follow-tags",
     "prepublishOnly": "npm run tsc && npm run clean-test-code",
-    "clean": "rimraf ./lib && rimraf ./types",
-    "clean-test-code": "rimraf ./lib/**/*.test.js && rimraf ./types/**/*.test.d.ts",
+    "clean": "rimraf ./lib",
+    "clean-test-code": "rimraf ./lib/**/*.test.js",
     "generate-data": "node ./lib/scripts/generate-data.js"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=8.0.0"
   },
   "repository": {
     "type": "git",
@@ -36,13 +36,16 @@
   },
   "homepage": "https://github.com/Mitica/text-country#readme",
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/node-fetch": "^1.6.9",
+    "@types/node": "10.12.10",
+    "@types/node-fetch": "^2.1.4",
     "atonic": "^1.0.4",
-    "ava": "^0.23.0",
-    "node-fetch": "^2.1.2",
+    "ava": "^0.25.0",
+    "node-fetch": "^2.3.0",
     "rimraf": "^2.6.2",
-    "typescript": "latest",
-    "wiki-entity": "^0.3.6"
+    "typescript": "3.2.1",
+    "wiki-entity": "^0.4.2"
+  },
+  "dependencies": {
+    "iso-639-2": "^1.1.0"
   }
 }

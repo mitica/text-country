@@ -45,14 +45,11 @@ export class SynonymsDataGenerator extends DataGenerator {
 }
 
 async function getNamesVariants(names: string[], lang: string) {
-
-    const titles = names.join('|');
-
-    console.log('exploring titles ', titles);
+    console.log('exploring titles ', names);
     try {
         let entities = await getEntities({
             language: lang,
-            titles: titles,
+            titles: names,
             redirects: true,
             extract: 0,
             claims: 'none',

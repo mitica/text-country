@@ -26,8 +26,7 @@ export default function findCountry(text: string, lang: string, options?: Option
     const resultsMap: Map<string, CountryRating> = new Map();
 
     for (let item of items) {
-        let matches;
-        while ((matches = item.reg.exec(text)) !== null) {
+        while (item.reg.exec(text) !== null) {
             if (!resultsMap.has(item.country)) {
                 const result: CountryRating = {
                     country: item.country,
@@ -51,7 +50,7 @@ function getDataItems(lang: string): DataItem[] {
     if (CACHE[lang] === undefined) {
         const data = getLanguageData(lang);
         const items = Object.keys(data).map(country => {
-            const arr: string[] = data[country].map(it => it.name);
+            const arr: string[] = data[country].map(it => it.name.replace(/([\(\)\[\]\.])/g, '\\$1'));
             return {
                 country,
                 reg: new RegExp('\\b(' + arr.join('|') + ')\\b', 'gi'),
