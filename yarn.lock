@@ -3724,6 +3724,11 @@ uid2@0.0.3:
   resolved "https://registry.yarnpkg.com/uid2/-/uid2-0.0.3.tgz#483126e11774df2f71b8b639dcd799c376162b82"
   integrity sha1-SDEm4Rd03y9xuLY53NeZw3YWK4I=
 
+unicode-wb@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/unicode-wb/-/unicode-wb-1.0.0.tgz#340ea643297f15fcef467b7a3389f3ba139b87ce"
+  integrity sha512-y/JMmX9hnuF/3gOjkACCYAYbIQVx8MQunAJ8hl5sIEvmExRQgmhCuTfzACVlLmorspynIoZKarO0lYRqhIislA==
+
 union-value@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"

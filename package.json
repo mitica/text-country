@@ -46,6 +46,7 @@
     "wiki-entity": "^0.4.2"
   },
   "dependencies": {
-    "iso-639-2": "^1.1.0"
+    "iso-639-2": "^1.1.0",
+    "unicode-wb": "^1.0.0"
   }
 }

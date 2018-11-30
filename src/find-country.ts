@@ -1,5 +1,6 @@
 import { Options, DEFAULT_OPTIONS } from "./options";
 import { getLanguages, getLanguageData } from "./data";
+const { WORD_BOUNDARY } = require('unicode-wb');
 
 const LANGUAGES = getLanguages();
 const CACHE: { [lang: string]: DataItem[] } = {}
@@ -53,7 +54,7 @@ function getDataItems(lang: string): DataItem[] {
             const arr: string[] = data[country].map(it => it.name.replace(/([\(\)\[\]\.])/g, '\\$1'));
             return {
                 country,
-                reg: new RegExp('\\b(' + arr.join('|') + ')\\b', 'gi'),
+                reg: new RegExp(WORD_BOUNDARY + '(' + arr.join('|') + ')' + WORD_BOUNDARY, 'gi'),
             };
         });
         CACHE[lang] = items;

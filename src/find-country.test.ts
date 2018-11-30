@@ -22,5 +22,8 @@ test('more countries', t => {
 
 test('bg', t => {
     t.deepEqual(findCountry('text Bulgaria', 'en'), [{ country: 'bg', rating: 1 }]);
+    t.deepEqual(findCountry('text България text', 'bg'), [{ country: 'bg', rating: 1 }]);
+    t.deepEqual(findCountry('България text', 'bg'), [{ country: 'bg', rating: 1 }]);
     t.deepEqual(findCountry('text България', 'bg'), [{ country: 'bg', rating: 1 }]);
+    t.deepEqual(findCountry('България', 'bg'), [{ country: 'bg', rating: 1 }]);
 })
